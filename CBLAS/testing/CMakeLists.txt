@@ -22,7 +22,9 @@ endfunction()
 
 function(add_cblas_test_target target)
   add_executable(${target} ${ARGN})
-  lapack_add_coverage(${target})
+  lapack_configure_target(${target})
+  target_include_directories(${target} PRIVATE "${LAPACK_SOURCE_DIR}/CBLAS/include")
+
 
   if(HAS_ATTRIBUTE_WEAK_SUPPORT)
     target_compile_definitions(${target} PRIVATE HAS_ATTRIBUTE_WEAK_SUPPORT)
