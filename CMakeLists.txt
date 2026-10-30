@@ -140,10 +140,9 @@ set(LAPACKLIB lapack${lapack_library_suffix})
 set(LAPACKELIB lapacke${lapack_library_suffix})
 set(TMGLIB tmglib${lapack_library_suffix})
 
-# Only LAPACKE with both external providers can use a C-only toolchain.
+# With both external providers, the C interfaces may use a C-only toolchain.
 if(NOT lapack_external_blas
    OR NOT lapack_external_lapack
-   OR CBLAS
    OR BUILD_TESTING
    OR LAPACKE_WITH_TMG
    OR TEST_FORTRAN_COMPILER)
